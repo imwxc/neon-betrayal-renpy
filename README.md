@@ -40,6 +40,38 @@ neon-betrayal-renpy/
 2. 将项目放入 Ren'Py 项目目录
 3. 使用 Ren'Py Launcher 启动
 
+## 构建 Web 版本
+
+### 准备工作
+
+```bash
+# 下载 Ren'Py SDK
+curl -L -o renpy-8.3.4-sdk.tar.bz2 "https://www.renpy.org/dl/8.3.4/renpy-8.3.4-sdk.tar.bz2"
+tar -xjf renpy-8.3.4-sdk.tar.bz2
+
+# 下载 Web 支持包
+curl -L -o renpy-8.3.4-web.zip "https://www.renpy.org/dl/8.3.4/renpy-8.3.4-web.zip"
+unzip -o renpy-8.3.4-web.zip -d renpy-8.3.4-sdk/
+
+# 复制项目到 SDK 目录
+cp -r neon-betrayal-renpy renpy-8.3.4-sdk/projects/
+```
+
+### 构建命令
+
+```bash
+cd renpy-8.3.4-sdk
+./renpy.sh launcher web_build projects/neon-betrayal-renpy --destination ./web-dist
+```
+
+### 本地测试
+
+```bash
+cd web-dist
+python3 -m http.server 8080
+# 访问 http://localhost:8080
+```
+
 ## 角色
 
 - **陈子明** (主角) - 叛逃的前高管
