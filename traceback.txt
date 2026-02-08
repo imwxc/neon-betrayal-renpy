@@ -1,0 +1,54 @@
+﻿I'm sorry, but an uncaught exception occurred.
+
+While running game code:
+  File "game/script.rpy", line 30, in script
+    "雨水沿着霓虹灯牌的边缘滴落，像一串失真的倒计时。"
+  File "renpy/common/00action_menu.rpy", line 271, in __call__
+    layout.yesno_screen(layout.QUIT, Quit(False))
+  File "renpy/common/00layout.rpy", line 516, in yesno_screen
+    elif renpy.invoke_in_new_context(layout.invoke_yesno_prompt, None, message):
+  File "renpy/common/00layout.rpy", line 472, in invoke_yesno_prompt
+    rv = layout.yesno_prompt(*args)
+AttributeError: 'Layout' object has no attribute 'yesno_prompt'
+
+-- Full Traceback ------------------------------------------------------------
+
+Full traceback:
+  File "game/script.rpy", line 30, in script
+    "雨水沿着霓虹灯牌的边缘滴落，像一串失真的倒计时。"
+  File "/home/imwxc/renpy-sdk/renpy-8.3.4-sdk/renpy/ast.py", line 2579, in execute
+    Say.execute(self)
+  File "/home/imwxc/renpy-sdk/renpy-8.3.4-sdk/renpy/ast.py", line 621, in execute
+    renpy.exports.say(who, what, *args, **kwargs)
+  File "/home/imwxc/renpy-sdk/renpy-8.3.4-sdk/renpy/exports/sayexports.py", line 132, in say
+    who(what, *args, **kwargs)
+  File "/home/imwxc/renpy-sdk/renpy-8.3.4-sdk/renpy/character.py", line 1455, in __call__
+    self.do_display(who, what, cb_args=self.cb_args, dtt=dtt, **display_args)
+  File "/home/imwxc/renpy-sdk/renpy-8.3.4-sdk/renpy/character.py", line 1106, in do_display
+    display_say(who,
+  File "/home/imwxc/renpy-sdk/renpy-8.3.4-sdk/renpy/character.py", line 803, in display_say
+    rv = renpy.ui.interact(mouse='say', type=type, roll_forward=roll_forward)
+  File "/home/imwxc/renpy-sdk/renpy-8.3.4-sdk/renpy/ui.py", line 301, in interact
+    rv = renpy.game.interface.interact(roll_forward=roll_forward, **kwargs)
+  File "/home/imwxc/renpy-sdk/renpy-8.3.4-sdk/renpy/display/core.py", line 2215, in interact
+    repeat, rv = self.interact_core(preloads=preloads, trans_pause=trans_pause, pause=pause, pause_start=pause_start, pause_modal=pause_modal, **kwargs) # type: ignore
+  File "/home/imwxc/renpy-sdk/renpy-8.3.4-sdk/renpy/display/core.py", line 3117, in interact_core
+    self.quit_event()
+  File "/home/imwxc/renpy-sdk/renpy-8.3.4-sdk/renpy/display/core.py", line 1815, in quit_event
+    renpy.display.behavior.run(renpy.config.quit_action)
+  File "/home/imwxc/renpy-sdk/renpy-8.3.4-sdk/renpy/display/behavior.py", line 401, in run
+    return action(*args, **kwargs)
+  File "renpy/common/00action_menu.rpy", line 271, in __call__
+    layout.yesno_screen(layout.QUIT, Quit(False))
+  File "renpy/common/00layout.rpy", line 516, in yesno_screen
+    elif renpy.invoke_in_new_context(layout.invoke_yesno_prompt, None, message):
+  File "/home/imwxc/renpy-sdk/renpy-8.3.4-sdk/renpy/game.py", line 303, in invoke_in_new_context
+    return callable(*args, **kwargs)
+  File "renpy/common/00layout.rpy", line 472, in invoke_yesno_prompt
+    rv = layout.yesno_prompt(*args)
+AttributeError: 'Layout' object has no attribute 'yesno_prompt'
+
+Linux-6.6.87.2-microsoft-standard-WSL2-x86_64-with-glibc2.39 x86_64
+Ren'Py 8.3.4.24120703
+Neon Betrayal 1.0.0
+Sun Feb  8 13:42:53 2026
