@@ -1,6 +1,11 @@
 ## 游戏配置选项 - Demo 版本
 ## 使用默认字体，不依赖外部资源
 
+## 初始化 GUI（必须在其他配置之前）
+init offset = -2
+init python:
+    gui.init(1280, 720)
+
 init python:
     # 游戏元数据
     build.name = "neon-betrayal"
@@ -35,9 +40,28 @@ init python:
     # 跳过配置
     config.allow_skipping = True
 
-    # 使用支持中文的字体 (思源黑体)
-    style.default.font = "SourceHanSansLite.ttf"
+    # 启动时显示主菜单（而不是直接进入游戏）
+    config.main_menu_music = None
+
+    # 禁用自动加载最后存档
+    config.autoreload = False
+
+    # 使用 FontGroup 配置字体
+    # 顺序很重要：先添加的字体优先级更高
+    # 0x0020-0x007f: 基本拉丁字母 (英文/数字)
+    # 0x0370-0x03ff: 希腊字母
+    # 0x4e00-0x9fff: 中日韩统一表意文字 (中文)
+    style.default.font = FontGroup()\
+        .add("DejaVuSans.ttf", 0x0020, 0x007f)\
+        .add("DejaVuSans.ttf", 0x0370, 0x03ff)\
+        .add("SourceHanSansLite.ttf", 0x4e00, 0x9fff)\
+        .add("SourceHanSansLite.ttf", 0x3000, 0x303f)\
+        .add("SourceHanSansLite.ttf", 0xff00, 0xffef)
     style.default.size = 24
+
+    # 注册字体别名，方便在文本中使用
+    config.font_name_map["chinese"] = "SourceHanSansLite.ttf"
+    config.font_name_map["english"] = "DejaVuSans.ttf"
 
 ## 游戏启动配置
 define gui.show_name = True

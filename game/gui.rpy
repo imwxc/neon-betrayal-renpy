@@ -1,6 +1,8 @@
 ## GUI 自定义 - Demo 版本
 ## 使用默认样式，不依赖外部资源
 
+init offset = -2
+
 init python:
     # 赛博朋克配色方案
     gui.accent_color = '#00d4ff'  # 青色霓虹
